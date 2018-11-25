@@ -1,0 +1,61 @@
+.ListItem {
+    width: 100%;
+    padding: 0px 0px;
+    text-align: left;
+    border: 1px solid gray;
+    margin: 0px 0px;
+    box-sizing: border-box;
+    cursor: pointer;
+    float:left;
+}
+
+.ListHead{
+    width: 100%;
+    padding: 0px 0px;
+    text-align: left;
+    border: 1px solid gray;
+    margin: 0px 0px;
+    box-sizing: border-box;
+    cursor: pointer;
+    float:left;
+    background-color:bisque;
+}
+
+.ListItem:hover,
+.ListItem:active {
+    background-color: #C0DDF5;
+}
+
+.ListItem span.Tiny, .ListHead span.Tiny{
+    font-size:14px;
+    width:80px;
+    margin:0px 0px;
+    padding: 10px 5px;
+    float:left;
+    text-align: right;
+    border-right:solid 1px gray;
+    font-family: 'Chakra Petch', sans-serif;
+    background-color:bisque;
+}
+
+.ListItem span.Small, .ListHead span.Small{
+    font-size:14px;
+    width:124px;
+    margin:0px 0px;
+    padding: 10px 5px;
+    float:left;
+    text-align: left;
+    border-right:solid 1px gray;
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+.ListItem span.Medium, .ListHead span.Medium{
+    font-size:14px;
+    width:182px;
+    margin:0px 0px;
+    padding: 10px 5px;
+    float:left;
+    text-align: left;
+    border-right:solid 1px gray;
+    font-family: 'Chakra Petch', sans-serif;
+}
