@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Used API: https://coinmarketcap.com/api/
 
-##Libraries: 
+## Libraries: 
 
 <ul>
 <li>react-router-dom</li>
