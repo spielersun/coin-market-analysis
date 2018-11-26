@@ -3,7 +3,6 @@ import {Bubble} from 'react-chartjs-2';
 import axios from 'axios';
 import './Chart.css';
 
-
 class Chart extends Component {
   state = {
     marketValues: [],
@@ -12,14 +11,20 @@ class Chart extends Component {
     bubbleList: []
   }
 
-  componentDidMount(){
-    this.getMarketValuesHandler(this.state.linesLimit);
+    // Did Mount Hook
+    // Run the query directly
+    componentDidMount(){
+      this.getMarketValuesHandler(this.state.linesLimit);
   };
 
+  // Did Update Hook
+  // Run the query if limit changed
   componentDidUpdate(){
-    this.changeLimitState(this.props.limit);
+      this.checkLimitState(this.props.limit);
   };
 
+  // Get data from the API with limit or new limit
+  // Create a list with three columns here for the chart
   getMarketValuesHandler = (newLimit) => {
     axios.get('http://api.coinmarketcap.com/v2/ticker/?sort=rank&limit=' + newLimit)
         .then(response => {
@@ -42,15 +47,22 @@ class Chart extends Component {
         });
   };
 
-  changeLimitState = (newLimit) => {
+  // Check the state
+  // If the limit changed, run a new query
+  checkLimitState = (newLimit) => {
     const oldLimit = this.state.linesLimit;
 
+    // If it's the old one don't do anything
+    // This is not an elegant move, 
+    // But in a project this simlicity, does not matter much
     if (oldLimit !== newLimit){
       this.getMarketValuesHandler(newLimit);
       this.setState({linesLimit: newLimit});
     };
   };
 
+  // Add list to the chart data
+  // Print Chartjs Bubble Chart with that data
   render() {
     const data = {
       labels: ['Recent'],
@@ -81,13 +93,15 @@ class Chart extends Component {
 
     let content = <p style={{textAlign:'center'}}>Something went wrong...</p>;
     
-
     if (!this.state.error){
       content = <Bubble data={data}/>;
     };
 
     return (
       <div className="Chart">
+        <h3>X: MARKET CAP</h3>
+        <h3>Y: VOLUME (24 Hour)</h3>
+        <h3>Circle Radius: CHANGE (24 Hour)</h3>
         {content}
       </div>
     );

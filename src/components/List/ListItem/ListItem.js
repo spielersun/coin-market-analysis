@@ -1,12 +1,14 @@
 import React from 'react';
 import './ListItem.css';
 
+// Format Currency 
 const moneyFormatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
     minimumFractionDigits: 2,
 });
 
+// Get the props, format some and print them
 const listItem = (props) => (
     <div className="ListItem">
         <span className="Tiny">{props.rank}</span>

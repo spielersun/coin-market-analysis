@@ -10,14 +10,19 @@ class List extends Component {
         error: false
     }
 
+    // Did Mount Hook
+    // Run the query directly
     componentDidMount(){
         this.getMarketValuesHandler(this.state.linesLimit);
     };
 
+    // Did Update Hook
+    // Run the query if limit changed
     componentDidUpdate(){
-        this.changeLimitState(this.props.limit);
+        this.checkLimitState(this.props.limit);
     };
 
+    // Get data from the API with limit or new limit
     getMarketValuesHandler = (newLimit) => {
         axios.get('http://api.coinmarketcap.com/v2/ticker/?sort=rank&limit=' + newLimit)
             .then(response => {
@@ -31,15 +36,21 @@ class List extends Component {
             });
     };
     
-    changeLimitState(newLimit){
+    // Check the state
+    // If the limit changed, run a new query
+    checkLimitState = (newLimit) => {
         const oldLimit = this.state.linesLimit;
 
+        // If it's the old one don't do anything
+        // This is not an elegant move, 
+        // But in a project this simlicity, does not matter much
         if (oldLimit !== newLimit){
             this.getMarketValuesHandler(newLimit);
             this.setState({linesLimit: newLimit});
         };
     };
 
+    // Send props one by one and print the row
     render() {
         let content = <p style={{textAlign:'center'}}>Something went wrong.</p>;
 
@@ -60,6 +71,7 @@ class List extends Component {
             });
         };
 
+        // Print table header then, content
         return (
             <div className="List">
                 <div className="ListHead">

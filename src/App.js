@@ -11,6 +11,8 @@ class App extends Component {
     error: false
   }
 
+  // Change the content limit via state
+  // Tickers max limit is 100
   limitHandler = (event) => {
     this.setState({linesLimit: event.target.value})
   }

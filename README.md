@@ -10,6 +10,7 @@ Used API: https://coinmarketcap.com/api/
 <li>axios</li>
 </ul>
 
+For localhost, enable cross origin resource sharing. (CORS)
 
 In the project directory, you can run:
 
